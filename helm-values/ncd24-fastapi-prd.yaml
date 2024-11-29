@@ -4,7 +4,7 @@ nodePort: 31003
 containerPort: 8000
 image:
   repository: ghcr.io/winggundamth/ncd24-fastapi
-  tag: v0.0.1
+  tag: v0.0.2
   pullPolicy: Always
 probe:
   enabled: true
