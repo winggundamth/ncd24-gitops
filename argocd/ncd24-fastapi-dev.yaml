@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ncd24-fastapi-dev
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: https://chart.onechart.dev
+    chart: onechart
+    targetRevision: 0.73.0
+    helm:
+      valueFiles:
+      - $values/helm-values/ncd24-fastapi-dev.yaml
+  - repoURL: https://github.com/winggundamth/ncd24-gitops.git
+    targetRevision: main
+    ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ncd24-fastapi-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

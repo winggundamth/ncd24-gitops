@@ -1,0 +1,11 @@
+replicas: 1
+nodePortEnabled: true
+nodePort: 31002
+containerPort: 8000
+image:
+  repository: ghcr.io/CHANGEME/ncd24-fastapi
+  tag: dev
+  pullPolicy: Always
+probe:
+  enabled: true
+  path: /health
